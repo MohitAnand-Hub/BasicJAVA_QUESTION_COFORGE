@@ -1,0 +1,363 @@
+1. Write a program to demonstrate exception handling for ArrayIndexOutOfBoundsException, using command line arguments.
+Sol:-
+public class ArrayoutofboundException {
+
+  public static void main(String[] args) {
+  try {
+  System.out.println("args[0]="+args[0]);
+  System.out.println("args[1]="+args[1]);
+  System.out.println("args[2]="+args[2]);
+  }
+  catch(Exception ex){
+  System.out.println(ex);
+  }
+  }
+  }
+Output of the program
+
+java.lang.ArrayIndexOutOfBoundsException: 0
+
+*************************************************************************
+
+
+2. Write a program to accept numbers from user and handle all the possible unchecked exception that can occur.
+Sol:-
+class Example {  
+   public static void main(String args[]) {
+	try{
+	   int arr[] ={1,2,3,4,5};
+	   System.out.println(arr[7]);
+	}
+        catch(ArrayIndexOutOfBoundsException e){
+	   System.out.println("The specified index does not exist " +
+		"in array. Please correct the error.");
+	}
+   }
+}
+Output:
+
+The specified index does not exist in array. Please correct the error.
+
+*************************************************************************
+
+
+
+3. Write a program to print a given string character by character and handle StringIndexOutOfBoundsException.
+Sol:- 
+public class StringIndexOutOfBoundsException {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the input text : ");
+        try{
+            char c = scanner.nextLine().charAt(4);
+            System.out.println("The character at index 4 is : "+c);
+        }catch(Exception e){
+            //StringIndexOutOfBoundsException cannot be caught explicitly
+            System.out.println("Caught exception : "+e.toString());
+        }
+    }
+}
+
+Output 
+Enter the input text : 
+tea
+Caught exception : java.lang.StringIndexOutOfBoundsException: String index out of range: 4
+
+*************************************************************************
+
+
+4. Write a program to handle ClassCastException, by doing explicit casting of Object to Integer.
+Sol:-
+class Phone {}
+
+interface Wireless {
+  default void charge() {
+    System.out.println("Phone is charging");
+  }
+}
+
+class Smartphone extends Phone implements Wireless {}
+
+public class ClassCastExceptionExample {
+
+ private static final Phone myPhone = new Phone();
+
+ public static void main(String... args) {
+    if (myPhone instanceof Smartphone smartphone) {
+      smartphone.charge();
+    } else {
+      System.out.println("Phone cannot be charged.");
+    }
+ }
+}
+Phone cannot be charged.
+
+*************************************************************************
+
+
+5. Write a program to concatenate StringBuilder & StringBuffer objects.
+Sol:-
+public class StringConcat{
+ public static void main(String args[]) {
+ String firstname = "Virat";
+ String lastname = "Kohli"; 
+ String name = firstname + " " + lastname; 
+System.out.println(name); 
+StringBuilder sb = new StringBuilder(14);
+ sb.append(firstname).append(" ").append(lastname);
+ System.out.println(sb.toString());
+ StringBuffer sBuffer = new StringBuffer(15); 
+sBuffer.append(firstname).append(" ").append(lastname); 
+System.out.println(sBuffer.toString()); } 
+} 
+Output 
+Virat Kohli 
+Virat Kohli
+Virat Kohli
+
+
+*************************************************************************
+
+
+6. Write a program to get a substring of a StringBuffer
+Sol:-
+public class StringBufferSubstringExample1 {  
+    public static void main(String[] args) {  
+        StringBuffer sb = new StringBuffer("stringbuffer");  
+        System.out.println("string: "+sb);  
+        String subsequence= sb.substring(6);  
+        //subsequence from start index 6  
+        System.out.println("subsequence from start index 6= "+subsequence);  
+    }  
+}
+string: stringbuffer
+subsequence from start index 6= buffer
+
+*************************************************************************
+
+7. Write a program to display the length and capacity of String, StringBuilder and StringBuffer.
+Sol:-
+public class StringBufferCapacity {
+   public static void main(String[] args) {
+      StringBuffer buffer = new StringBuffer();
+      System.out.println("Initial capacity: "+buffer.capacity());
+      buffer.append("Hello ");
+      buffer.append("how ");
+      buffer.append("are ");
+      buffer.append("you");
+      System.out.println("Contents of the string buffer: "+buffer);
+      System.out.println("Capacity after adding data: "+buffer.capacity());
+   }
+}
+Output
+Initial capacity: 16
+Contents of the string buffer: Hello how are you
+Capacity after adding data: 34
+
+
+*************************************************************************
+
+
+8. Write a program to check whether two given strings contains same set of characters as well as having same length.
+
+ input
+ String s1 = "amar";
+ String s2= "rama";
+ 
+ output : Both contains same characters
+
+Sol:-
+public class Solution {
+    public static void main(String[] args) {
+        String s1 = "amar";
+        String s2 = "rama";
+        Solution4 obj = new Solution4();
+        if(obj.checkStrings(s1,s2)){
+            System.out.println("Both contains same characters");
+        }
+        else {
+            System.out.println("Both contains different characters");
+        }
+
+
+
+    }
+
+    public boolean checkStrings(String s1, String s2) {
+        boolean response = true;
+        if(s1.length() == s2.length()){
+            for (int i = 0; i < s2.length() ; i++) {
+                if(s1.contains(""+ s2.charAt(i))){
+                   continue;
+                }
+                else{
+                    response = false;
+                    break;
+                }
+            }
+
+        }
+        else{
+            response = false;
+        }
+
+        return response;
+    }
+}
+
+
+*************************************************************************
+
+
+
+9. Write a program to lexicographically arrange the given strings "Raman" , "Aman" , "Vikram" , "Shyam" and "Bhuvan".
+Sol:-
+import java.util.Arrays;
+
+public class Solution {
+    public static void main(String[] args) {
+        String[] strings = {"Raman", "Aman", "Vikram", "Shyam", "Bhuvan"};
+        for (int i = 0; i < strings.length - 1; i++) {
+            for (int j = 0; j < strings.length - 1; j++) {
+                if (strings[j].compareTo(strings[j + 1]) > 0) {
+                    String temp = strings[j];
+                    strings[j] = strings[j + 1];
+                    strings[j + 1] = temp;
+                }
+            }
+        }
+        System.out.println(Arrays.toString(strings));
+    }
+}
+
+*************************************************************************
+
+
+10. Create objects of all the wrapper classes and print then on console, with using constructor.
+Sol:-
+public class Solution {
+    public static void main(String[] args) {
+        Integer objInteger = new Integer(10);
+        Byte objByte = new Byte((byte) 12);
+        Short objShort = new Short((short) 15);
+        Long objLong = new Long(123L);
+        Double objDouble = new Double(12.34);
+        Float objFloat = new Float(12.3f);
+        Boolean objBoolean = new Boolean(true);
+        Character objCharacter = new Character('c');
+
+        System.out.println(objInteger);
+        System.out.println(objBoolean);
+        System.out.println(objByte);
+        System.out.println(objDouble);
+        System.out.println(objCharacter);
+        System.out.println(objFloat);
+        System.out.println(objLong);
+        System.out.println(objShort);
+
+    }
+}
+
+*************************************************************************
+
+
+11. Write a program to demonstrate boxing and un-boxing.
+Sol:
+public class Solution {
+    public static void main(String[] args) {
+        //boxing
+        Integer objInteger = Integer.valueOf(10);
+        //un-boxing
+        int a = objInteger.intValue();
+
+        System.out.println(a);
+    }
+}
+
+*************************************************************************
+
+12. Write a program to demonstrate autoboxing and unboxing.
+Sol:-
+public class Solution {
+    public static void main(String[] args) {
+        //autoboxing
+        Integer objInteger = 10;
+        //un-boxing
+        int a = objInteger;
+
+        System.out.println(a);
+
+    }
+}
+
+*************************************************************************
+
+13. Create an array of 5 integers and print sum and average by creating Integer sum(Integer[] arr) and Double average(Integer sum, Integer numberOfElements). Do casting as required for getting proper result;
+Sol:-
+public class Solution {
+    public static void main(String[] args) {
+        Integer[] arr = {10, 20, 30, 40, 50};
+        Solution4 obj = new Solution4();
+        Integer sum = obj.sum(arr);
+        Integer numberOfElements = arr.length;
+        Double ave = obj.average(sum, numberOfElements);
+        System.out.println("sum = " + sum);
+        System.out.println("average = " + ave);
+
+
+    }
+
+    public Double average(Integer sum, Integer numberOfElements) {
+        Double response = 0.0;
+        response = (double) sum / numberOfElements;
+        return response;
+    }
+
+    public Integer sum(Integer[] arr) {
+        Integer response = 0;
+        for (Integer integer : arr) {
+            response += integer;
+        }
+        return response;
+    }
+}
+
+*************************************************************************
+
+14. Write a program to print ASCII values of Character objects using wrapper class.
+Sol:-
+public class Solution {
+    public static void main(String[] args) {
+        Character obj = Character.valueOf('A');
+        System.out.println((int) obj);
+    }
+}
+
+*************************************************************************
+
+15. Write a program to print the smaller of the two given Integer, Double and Character Objects.
+Sol:-
+public class Solution {
+    public static void main(String[] args) {
+        Integer objInteger1 = Integer.valueOf(100);
+        Integer objInteger2 = Integer.valueOf(200);
+        if (Integer.compare(objInteger1, objInteger2) == -1) {
+            System.out.println(objInteger1);
+        } else if (Integer.compare(objInteger1, objInteger2) == 1) {
+            System.out.println(objInteger2);
+        } else {
+            System.out.println("equal");
+        }
+        Double objDouble1 = Double.valueOf(12.34);
+        Double objDouble2 = Double.valueOf(123.43);
+        if (Double.compare(objDouble1, objDouble2) == -1) {
+            System.out.println(objDouble1);
+        } else if (Double.compare(objDouble1, objDouble2) == 1) {
+            System.out.println(objDouble2);
+        } else {
+            System.out.println("equal");
+        }
+    }
+}
+
+*************************************************************************
